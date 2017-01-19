@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
-
+# enables serving assets in production and setting your logger to standard out
+gem 'rails_12factor', group: :production
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.9'
 # Use postgresql as the database for Active Record
