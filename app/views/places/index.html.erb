@@ -1,1 +1,22 @@
-<h1>Welcome to my Awesome Web App</h1>
+<h1>Testing</h1>
+<h2><%= @places.inspect %></h2>
+
+
+<!--
+  @places.do each |place|
+    place.name
+    place.address
+    place.description
+
+  end
+-->
+
+
+
+<% @places.each do |place| %>
+  <div>
+    <h1><%= place.name %></h1>
+    <i><%= place.address %></i>
+    <p><%= place.description %></p>
+  </div>
+<% end %>
