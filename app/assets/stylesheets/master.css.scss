@@ -1,5 +1,6 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
 
 body {
   background: url('../assets/seigaiha.png');
@@ -23,10 +24,19 @@ h1, h2, h3, h4, h5, h6 {
   padding: 0;
 }
 
-
 .navbar.navbar-inverse {
   background: url('../assets/grey_wash_wall.png');
   border-radius: 0;
   box-shadow: 0 10px 10px #2a2a2a;
 }
 
+.navbar-inverse .navbar-brand {
+  color: #A23FC4;
+  font-family: 'rubikmedium';
+  letter-spacing: -0.3px;
+  font-size: 30px;
+}
+
+.navbar-inverse .navbar-brand:hover {
+  color: #A23FC4;
+}
