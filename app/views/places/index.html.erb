@@ -1,21 +1,23 @@
-<% @places.each do |place| %>
-  <div class="booyah-box col-xs-10 col-xs-offset-1">
-    <h1><%= place.name %></h1>
 
-    <i><%= place.address %></i>
-    <br /><br />
-    <p><%= place.description %></p>
-    <br />
+<p>Last places added by user is <span><%= @places_last.name %></span>
+</p>
 
-  </div>
-<% end %>
+<div class="row">
+  <% @places.each do |place| %>
+    <div class="booyah-box col-xs-10 col-xs-offset-1">
+      <h1>
+        <span><%= place.id %>.</span>
+        <%= place.name %>
+      </h1>
+      <i><%= place.address %></i>
+      <br /><br />
+      <p><%= place.description %></p>
+      <br />
+    </div>
+  <% end %>
+</div>
 
 
-<!--
-  @places.do each |place|
-    place.name
-    place.address
-    place.description
-
-  end
--->
+<div class="digg_pagination text-center">
+  <%= will_paginate @posts %>
+</div>
