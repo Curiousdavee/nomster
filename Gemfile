@@ -4,8 +4,12 @@ gem 'bootstrap-sass', '~> 3.3.5.1'
 gem 'sprockets', '2.11.0'
 # Use SCSS for stylesheets
 gem 'sass-rails'
-# will_paginate
+# Use will_paginate for pagnations
 gem 'will_paginate', '~> 3.1.0'
+# Use simple_form for form design
+gem 'simple_form'
+
+
 
 # enables serving assets in production and setting your logger to standard out
 gem 'rails_12factor', group: :production

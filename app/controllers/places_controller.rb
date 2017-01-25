@@ -7,7 +7,8 @@ class PlacesController < ApplicationController
   end
 
   def new
-
+    @places = Place.new
+    #need to build a blank place so we can make a form for that particular thing.
   end
 
 end
