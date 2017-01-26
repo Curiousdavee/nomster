@@ -7,8 +7,18 @@ class PlacesController < ApplicationController
   end
 
   def new
-    @places = Place.new
+    @place = Place.new
     #need to build a blank place so we can make a form for that particular thing.
   end
 
+  def create
+    Place.create(place_params)
+    redirect_to root_path
+  end
+
+  private
+
+  def place_params
+    params.require(:place).permit(:name, :description, :address)
+  end
 end
