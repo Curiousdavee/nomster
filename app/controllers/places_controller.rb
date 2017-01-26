@@ -17,6 +17,8 @@ class PlacesController < ApplicationController
   end
 
   private
+  # anything below, this is something that can be used
+  # inside the controller, but it isn't an actual page
 
   def place_params
     params.require(:place).permit(:name, :description, :address)
