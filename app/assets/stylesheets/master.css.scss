@@ -24,24 +24,29 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .navbar.navbar-inverse {
-  background: url('../assets/grey_wash_wall.png');
+  /* background: url('../assets/grey_wash_wall.png'); */
+  background-color: #1C1C1F;
   border-radius: 0;
-  box-shadow: 0 10px 10px #2a2a2a;
+  border: 0;
+  box-shadow: 0 2px #2a2a2a;
 }
 
 .navbar-inverse .navbar-brand {
-  color: #A23FC4;
+  color: #1ED760;
   font-family: 'rubikmedium';
   letter-spacing: -0.3px;
   font-size: 30px;
 }
 
 .navbar-inverse .navbar-brand:hover {
-  color: #A23FC4;
+  color: #fff;
 }
 
+.nav-color {
+  color: #fff;
+}
 
-
+/****************/
 /* Pagination CSS */
 .digg_pagination {
   cursor: default;

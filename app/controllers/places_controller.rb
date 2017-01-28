@@ -5,6 +5,7 @@ class PlacesController < ApplicationController
     #@places = Place.all
     @places = Place.all.paginate(:page => params[:page], :per_page => 10)
     @places_last = Place.last
+
   end
 
   def new
@@ -17,6 +18,10 @@ class PlacesController < ApplicationController
     redirect_to root_path
   end
 
+  def show
+    @place = Place.find(params[:id])
+  end
+
   private
   # anything below, this is something that can be used
   # inside the controller, but it isn't an actual page
@@ -24,4 +29,5 @@ class PlacesController < ApplicationController
   def place_params
     params.require(:place).permit(:name, :description, :address)
   end
+
 end
