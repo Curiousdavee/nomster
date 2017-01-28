@@ -22,6 +22,11 @@ class PlacesController < ApplicationController
     @place = Place.find(params[:id])
   end
 
+  def edit
+    @place = Place.find(params[:id])
+  end
+
+
   private
   # anything below, this is something that can be used
   # inside the controller, but it isn't an actual page
