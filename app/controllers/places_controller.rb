@@ -1,16 +1,17 @@
 class PlacesController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create]
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update]
+  # we want to require a user to be logged in only for the new and create actions
 
   def index
     #@places = Place.all
     @places = Place.all.paginate(:page => params[:page], :per_page => 10)
     @places_last = Place.last
-
   end
 
   def new
     @place = Place.new
     #need to build a blank place so we can make a form for that particular thing.
+    #place is a variable that holds an instance of a Place class
   end
 
   def create
@@ -24,10 +25,19 @@ class PlacesController < ApplicationController
 
   def edit
     @place = Place.find(params[:id])
+
+    if @place.user != current_user
+      return render text: 'Not Allowed', status: :forbidden
+    end
+
   end
 
   def update
     @place = Place.find(params[:id])
+    if @place.user != current_user
+      return render text: 'Not Allowed', status: :forbidden
+    end
+
     @place.update_attributes(place_params)
     redirect_to root_path
   end
@@ -36,6 +46,7 @@ class PlacesController < ApplicationController
     @place = Place.find(params[:id])
     @place.destroy
     redirect_to root_path
+
   end
 
   private
@@ -44,6 +55,7 @@ class PlacesController < ApplicationController
 
   def place_params
     params.require(:place).permit(:name, :description, :address)
+    # gather info from the place form
   end
 
 end
