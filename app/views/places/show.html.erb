@@ -1,6 +1,6 @@
 <div class="col-xs-10 col-xs-offset-1">
   <div class="pull-right">
-      <% if current_user && current_user == @place.user %>
+      <% if current_user && current_user == @place.user %> <!-- We only want to show the edit button if there is a user logged in, and that user is the user who created the place. -->
         <%= link_to 'Edit', edit_place_path(@place), class: 'btn btn-warning' %>
         <%= link_to 'Destroy', place_path(@place), method: :delete, data: {confirm: 'Are you sure you want to delete this?'} ,class: 'btn btn-danger' %>
       <% end %>
@@ -14,6 +14,4 @@
   <i><%= @place.address %></i>
   <br /><br />
   <p><%= @place.description %></p>
-
-
 </div>

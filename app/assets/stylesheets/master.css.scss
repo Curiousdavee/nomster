@@ -46,6 +46,13 @@ h1, h2, h3, h4, h5, h6 {
   color: #fff;
 }
 
+.has-error {
+  color: #ff3333;
+  background-color: #FFFEEE;
+  border-radius: 3px;
+  padding: 8px;
+}
+
 /****************/
 /* Pagination CSS */
 .digg_pagination {
