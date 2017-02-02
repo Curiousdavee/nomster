@@ -20,7 +20,7 @@ class PlacesController < ApplicationController
     if @place.valid?
       redirect_to root_path
     else
-      return render :new, status: :unprocessable_entity
+      render :new, status: :unprocessable_entity
     end
 
   end
@@ -39,7 +39,7 @@ class PlacesController < ApplicationController
 
   def update
     @place = Place.find(params[:id])
-    if @place.user != current_user
+    if current_user != @place.user
       return render text: 'Not Allowed', status: :forbidden
     end
 
@@ -48,7 +48,7 @@ class PlacesController < ApplicationController
     if @place.valid?
       redirect_to root_path
     else
-      return render :new, status: :unprocessable_entity
+      render :edit, status: :unprocessable_entity
     end
   end
 
