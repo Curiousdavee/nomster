@@ -4,32 +4,31 @@
   <br /><br />
   <p><%= @place.description %></p>
 
-
+<% if @place.latitude.present? && @place.longitude.present? %>
     <script>
-      function initMap() {
-        var myLatLng = {lat: -25.363, lng: 131.044};
+        function initMap() {
+          var myLatLng = {lat: <%= @place.latitude %>, lng: <%= @place.longitude %>};
 
-        var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 4,
-          center: myLatLng
-        });
+          var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 12,
+            center: myLatLng
+          });
 
-        var marker = new google.maps.Marker({
-          position: myLatLng,
-          map: map,
-          title: 'Hello World!'
-        });
-      }
+          var marker = new google.maps.Marker({
+            position: myLatLng,
+            map: map,
+            title: 'Hello World!'
+          });
+        }
     </script>
     <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBATetiHL2I2eba_CqMQChXVAcQ6fur0Xk&callback=initMap">
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDQ-f1fg52b2kbwlu2M1fkrS5mpCPbyiTk&callback=initMap">
     </script>
+
     <div id="map"></div>
+<% end %>
 
-
-
-
-
+<br />
 
   <div class="pull-right">
       <% if current_user && current_user == @place.user %> <!-- We only want to show the edit button if there is a user logged in, and that user is the user who created the place. -->
@@ -37,8 +36,9 @@
         <%= link_to 'Destroy', place_path(@place), method: :delete, data: {confirm: 'Are you sure you want to delete this?'} ,class: 'btn btn-danger' %>
       <% end %>
   </div>
-
 </div>
+
+
 
 
 
