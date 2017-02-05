@@ -12,9 +12,9 @@ gem 'simple_form'
 # Use device for user authentication
 gem 'devise', '>=3.2.4'
 # Use Geocoder for find latitude and longitude
-gem 'geocoder', '1.3.4'
+gem "geocoder", "1.3.4"
 # Use figaro for ENV
-gem 'figaro', '>= 1.0.0'
+gem "figaro", ">= 1.0.0"
 
 # enables serving assets in production and setting your logger to standard out
 gem 'rails_12factor', group: :production
