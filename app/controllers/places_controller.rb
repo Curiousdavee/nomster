@@ -3,9 +3,9 @@ class PlacesController < ApplicationController
   # we want to require a user to be logged in only for the new and create actions
 
   def index
-    #@places = Place.all
     @places = Place.all.paginate(:page => params[:page], :per_page => 10)
     @places_last = Place.last
+
   end
 
   def new
