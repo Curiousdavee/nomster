@@ -92,6 +92,7 @@
   <% end %>
 </div>
 
+
 <!-- Show photos for the selected place -->
 <div class="clear"></div>
 <br />
@@ -101,11 +102,11 @@
 <div class="booyah-box col-xs-10 col-xs-offset-1">
   <% @place.photos.each do |photo|  %>
     <div class="col-xs-10 col-sm-6">
+      <%= image_tag photo.picture %>
       <b><%= photo.caption %></b>
     </div>
   <% end %>
 </div>
-
 
 
 <!-- Create Photos for the selected place -->
@@ -113,6 +114,7 @@
   <h1>Photos</h1>
   <br />
   <%= simple_form_for @photo, url: place_photos_path(@place) do |f| %>
+    <%= f.input :picture %>
     <%= f.input :caption %>
     <br />
     <%= f.submit 'Add a Photo', class: 'btn btn-primary'%>
