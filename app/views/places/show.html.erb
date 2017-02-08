@@ -77,7 +77,7 @@
   </div>
 </div>
 
-
+<!-- Show comments for the selected place -->
 <div class="booyah-box col-xs-10 col-xs-offset-1">
   <% @place.comments.each do |comment| %>
     <div class="col-xs-12 col-sm-6">
@@ -92,10 +92,31 @@
   <% end %>
 </div>
 
+<!-- Show photos for the selected place -->
+<div class="clear"></div>
+<br />
+<div class="col-xs-10 col-xs-offset-1">
+  <h1 class="pull-left">Photos</h1>
+</div>
+<div class="booyah-box col-xs-10 col-xs-offset-1">
+  <% @place.photos.each do |photo|  %>
+    <div class="col-xs-10 col-sm-6">
+      <b><%= photo.caption %></b>
+    </div>
+  <% end %>
+</div>
 
 
 
-
-
+<!-- Create Photos for the selected place -->
+<div class="booyah-box col-xs-10 col-xs-offset-1">
+  <h1>Photos</h1>
+  <br />
+  <%= simple_form_for @photo, url: place_photos_path(@place) do |f| %>
+    <%= f.input :caption %>
+    <br />
+    <%= f.submit 'Add a Photo', class: 'btn btn-primary'%>
+  <% end %>
+</div>
 
 
