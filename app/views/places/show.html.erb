@@ -1,60 +1,66 @@
 <div class="booyah-box col-xs-10 col-xs-offset-1">
   <h1><%= @place.name %></h1>
-  <i><%= @place.address %></i>
+  <small><%= @place.address %></small>
+
+  <!-- Add spacing -->
   <br /><br />
-  <p><%= @place.description %></p>
 
-<% if @place.latitude.present? && @place.longitude.present? %>
+  <!-- Google MAP API -->
+  <% if @place.latitude.present? && @place.longitude.present? %>
     <script>
-        function initMap() {
-          var myLatLng = {lat: <%= @place.latitude %>, lng: <%= @place.longitude %>};
+      function initMap() {
+        var myLatLng = {lat: <%= @place.latitude %>, lng: <%= @place.longitude %>};
 
-          var map = new google.maps.Map(document.getElementById('map'), {
-            zoom: 12,
-            center: myLatLng
-          });
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 12,
+          center: myLatLng
+        });
 
-          var marker = new google.maps.Marker({
-            position: myLatLng,
-            map: map,
-            title: 'Hello World!'
-          });
-        }
+        var marker = new google.maps.Marker({
+          position: myLatLng,
+          map: map,
+          title: 'Hello World!'
+        });
+      }
     </script>
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDQ-f1fg52b2kbwlu2M1fkrS5mpCPbyiTk&callback=initMap">
     </script>
-
     <div id="map"></div>
-<% end %>
+  <% end %>
 
-<br />
+  <!-- Add spacing -->
+  <br />
 
+  <p><%= @place.description %></p>
+
+  <!-- Add spacing -->
+  <br />
+
+  <!-- Edit & delete buttons -->
   <div class="pull-right">
       <% if current_user && current_user == @place.user %> <!-- We only want to show the edit button if there is a user logged in, and that user is the user who created the place. -->
         <%= link_to 'Edit', edit_place_path(@place), class: 'btn btn-warning' %>
         <%= link_to 'Destroy', place_path(@place), method: :delete, data: {confirm: 'Are you sure you want to delete this?'} ,class: 'btn btn-danger' %>
       <% end %>
   </div>
-
 </div>
 
+<!-- clearfix -->
 <div class="clear"></div>
-<br/>
-<br/>
 
+<!-- Add spacing -->
+<br />
 
+<!-- Show Comment -->
 <div class="col-xs-10 col-xs-offset-1">
   <h1 class="pull-left">Comments</h1>
-  <!-- Button trigger modal -->
   <button class="btn btn-primary btn-lg pull-right" data-toggle="modal" data-target="#myModal">
-  Add a comment
+    Add a comment
   </button>
 </div>
 
-<div class="clear"></div>
-
-<!-- Modal -->
+<!-- Model for Comment -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -62,17 +68,17 @@
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
         <h4 class="modal-title" id="myModalLabel">Add a comment</h4>
       </div>
-      <%= simple_form_for @comment, url: place_comments_path(@place) do |f| %>
-          <div class="modal-body">
-            <%= f.input :message %>
-            <%= f.input :rating, as: :select, collection: Comment::RATINGS %>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            <%= f.submit 'Add a Comment', class: 'btn btn-primary'%>
-          </div>
+          <!-- Content -->
+          <%= simple_form_for @comment, url: place_comments_path(@place) do |f| %>
+            <div class="modal-body">
+              <%= f.input :message %>
+              <%= f.input :rating, as: :select, collection: Comment::RATINGS %>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              <%= f.submit 'Add a Comment', class: 'btn btn-primary'%>
+            </div>
           <% end %>
-
     </div>
   </div>
 </div>
@@ -92,13 +98,46 @@
   <% end %>
 </div>
 
-
-<!-- Show photos for the selected place -->
+<!-- clearfix -->
 <div class="clear"></div>
+
+<!-- Add spacing -->
 <br />
+
+<!-- Show Photo -->
 <div class="col-xs-10 col-xs-offset-1">
   <h1 class="pull-left">Photos</h1>
+  <button class="btn btn-primary btn-lg pull-right" data-toggle="modal" data-target="#myModal">
+    Add a Photo
+  </button>
 </div>
+
+<!-- Model for Photo -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Add a photo</h4>
+      </div>
+          <!-- Content -->
+          <div class="modal-body">
+              <%= simple_form_for @photo, url: place_photos_path(@place) do |f| %>
+                <%= f.input :picture %>
+                <%= f.input :caption %>
+                <br />
+                <%= f.submit 'Add a Photo', class: 'btn btn-primary'%>
+              <% end %>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+    </div>
+  </div>
+</div>
+
+<!-- Show photos for the selected place -->
 <div class="booyah-box col-xs-10 col-xs-offset-1">
   <% @place.photos.each do |photo|  %>
     <div class="col-xs-10 col-sm-6">
@@ -107,18 +146,3 @@
     </div>
   <% end %>
 </div>
-
-
-<!-- Create Photos for the selected place -->
-<div class="booyah-box col-xs-10 col-xs-offset-1">
-  <h1>Photos</h1>
-  <br />
-  <%= simple_form_for @photo, url: place_photos_path(@place) do |f| %>
-    <%= f.input :picture %>
-    <%= f.input :caption %>
-    <br />
-    <%= f.submit 'Add a Photo', class: 'btn btn-primary'%>
-  <% end %>
-</div>
-
-
