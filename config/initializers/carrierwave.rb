@@ -1,10 +1,10 @@
 # config/initializers/carrierwave.rb
 
-Carrierwave.configure do |config|
+CarrierWave.configure do |config|
   config.fog_credentials = {
-    :provider                => 'AWS',
-    :aws_access_key_id       => ENV["AKIAI63KVHPTGAMWMQZA"],
-    :aws_secret_access_key   => ENV["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"]
+    :provider               => 'AWS',                        # required
+    :aws_access_key_id      => ENV["AWS_ACCESS_KEY"],                        # required
+    :aws_secret_access_key  => ENV["AWS_SECRET_KEY"]                         # required
   }
-  config.fog_directory = ENV["davidchu34"]
+  config.fog_directory  = ENV["AWS_BUCKET"]                     # required
 end
