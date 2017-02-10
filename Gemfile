@@ -17,6 +17,8 @@ gem "geocoder", "1.3.4"
 gem "figaro", ">= 1.0.0"
 # Use CarrierWave for image upload
 gem 'carrierwave', '~> 1.0'
+# uSE FOG
+gem "fog"
 
 # enables serving assets in production and setting your logger to standard out
 gem 'rails_12factor', group: :production
