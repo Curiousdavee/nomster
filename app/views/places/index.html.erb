@@ -1,20 +1,25 @@
+<!-- Carousel -->
 <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
   <!-- Indicators -->
   <ol class="carousel-indicators">
     <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
     <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
   </ol>
 
   <!-- Wrapper for slides -->
   <div class="carousel-inner">
     <div class="item active">
-      <img src="..." alt="...">
+       <%= image_tag 'slider1.jpg' %>
       <div class="carousel-caption">
-        ...
+        Find the best chicken places
       </div>
     </div>
-    ...
+    <div class="item">
+       <%= image_tag 'slider2.jpg' %>
+      <div class="carousel-caption">
+        Lovely Fried rice!
+      </div>
+    </div>
   </div>
 
   <!-- Controls -->
