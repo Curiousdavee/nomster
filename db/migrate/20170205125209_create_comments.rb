@@ -13,3 +13,21 @@ class CreateComments < ActiveRecord::Migration
       add_index :comments, :place_id
   end
 end
+
+
+
+
+
+
+
+
+if a == 5 {
+puts "Hi"
+else {
+puts "Bye"
+}
+
+puts a == 5 ? "Hi" : "Bye"
+
+
+
